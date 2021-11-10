@@ -10,7 +10,7 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana 
         # - ./grafana/grafana.ini:/etc/grafana/grafana.ini
-      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ${PWD}/grafana/provisioning:/etc/grafana/provisioning
     environment:
       - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
 
@@ -23,7 +23,7 @@ services:
       - "9090:9090"
     volumes:
       - prometheus_data:/prometheus
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ${PWD}/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
 volumes:
   grafana_data:
