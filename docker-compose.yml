@@ -23,8 +23,14 @@ services:
       - "9090:9090"
     volumes:
       - prometheus_data:/prometheus
-      - ${PWD}/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    configs:
+      - source: prometheus_config
+        target: /etc/prometheus/prometheus.yml
 
 volumes:
   grafana_data:
   prometheus_data:
+
+configs:
+  prometheus_config:
+    file: ./prometheus/prometheus.yml
